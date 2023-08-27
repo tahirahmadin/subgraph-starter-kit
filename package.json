@@ -4,7 +4,7 @@
   "scripts": {
     "codegen": "graph codegen",
     "build": "graph build",
-    "deploy": "graph deploy --product hosted-service tahirahmadin/sleepswap"
+    "deploy": "graph deploy --product hosted-service tahirahmadin/subgraph-starter-erc20"
   },
   "dependencies": {
     "@graphprotocol/graph-cli": "0.42.4",

@@ -12,30 +12,31 @@ import {
   BigDecimal
 } from "@graphprotocol/graph-ts";
 
-export class UserBalances extends Entity {
+export class UserBalance extends Entity {
   constructor(id: string) {
     super();
     this.set("id", Value.fromString(id));
 
     this.set("address", Value.fromBytes(Bytes.empty()));
     this.set("balance", Value.fromBigInt(BigInt.zero()));
+    this.set("tranferCount", Value.fromI32(0));
   }
 
   save(): void {
     let id = this.get("id");
-    assert(id != null, "Cannot save UserBalances entity without an ID");
+    assert(id != null, "Cannot save UserBalance entity without an ID");
     if (id) {
       assert(
         id.kind == ValueKind.STRING,
-        "Cannot save UserBalances entity with non-string ID. " +
+        "Cannot save UserBalance entity with non-string ID. " +
           'Considering using .toHex() to convert the "id" to a string.'
       );
-      store.set("UserBalances", id.toString(), this);
+      store.set("UserBalance", id.toString(), this);
     }
   }
 
-  static load(id: string): UserBalances | null {
-    return changetype<UserBalances | null>(store.get("UserBalances", id));
+  static load(id: string): UserBalance | null {
+    return changetype<UserBalance | null>(store.get("UserBalance", id));
   }
 
   get id(): string {
@@ -63,5 +64,14 @@ export class UserBalances extends Entity {
 
   set balance(value: BigInt) {
     this.set("balance", Value.fromBigInt(value));
+  }
+
+  get tranferCount(): i32 {
+    let value = this.get("tranferCount");
+    return value!.toI32();
+  }
+
+  set tranferCount(value: i32) {
+    this.set("tranferCount", Value.fromI32(value));
   }
 }

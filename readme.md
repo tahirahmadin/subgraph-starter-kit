@@ -2,7 +2,7 @@
 
 This starter kit has been created and crafted to provide an initial grasp and configuration to build subgraph for your web3 project.
 
-- **Main - Web3Auth Starter Kit**
+- **Main - Subgraph Starter Kit**
   ![Starter Kits For Web3](subgraph.png)
 
 **About Me:**

@@ -1,7 +1,8 @@
 #ENTITIES
 
-type UserBalances @entity {
+type UserBalance @entity {
   id: ID!
   address: Bytes!
   balance: BigInt!
+  tranferCount: Int
 }
